@@ -1,0 +1,35 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+  <div class="sidebar-collapse">
+    <ul class="nav metismenu" id="side-menu">
+      <li class="nav-header">
+        <div class="dropdown profile-element">
+          <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+            <span class="clear">
+              <span class="block m-t-xs">
+                <h2 class="font-bold m-t-none">Databank</h2>
+            </span>
+          </a>
+          <ul class="dropdown-menu animated fadeInRight m-t-xs">
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </div>
+        <div class="logo-element">
+          IN+
+        </div>
+      </li>
+      <li class="<%= 'active' unless controller_path == 'users' %>">
+        <%= link_to insider_search_root_path do %>
+        <i class="fa fa-search"></i> <span class="nav-label">Search</span>
+        <% end %>
+      </li>
+      <% if policy(User).index? %>
+        <li class="<%= 'active' if controller_path == 'users' %>">
+          <%= link_to users_path do %>
+          <i class="fa fa-group"></i> <span class="nav-label">Users</span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+
+  </div>
+</nav>

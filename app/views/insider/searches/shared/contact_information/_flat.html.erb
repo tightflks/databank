@@ -1,0 +1,52 @@
+<div class="ibox">
+  <div class="ibox-title">
+    <h4>Contact Information</h4>
+  </div>
+  <div class="ibox-content">
+    <% result.contacts.each do |type, contact| %>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <tr>
+            <th colspan="4"><%= t "insider.searches.shared.contact_information.types.#{type}" %></th>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td><%= contact.name %></td>
+            <td>Address</td>
+            <td><%= contact.address %></td>
+          </tr>
+          <tr>
+            <td>Telephone</td>
+            <td><%= contact.telephone %></td>
+            <td>Suite</td>
+            <td><%= contact.suite %></td>
+          </tr>
+          <tr>
+            <td>Rep 1</td>
+            <td><%= contact.representative1 %></td>
+            <td>P.O. Box</td>
+            <td><%= contact.po_box %></td>
+          </tr>
+          <tr>
+            <td>Rep 2</td>
+            <td><%= contact.representative2 %></td>
+            <td>City</td>
+            <td><%= contact.city %></td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td><%= contact.email %></td>
+            <td>State</td>
+            <td><%= contact.state %></td>
+          </tr>
+          <tr>
+            <td>Website</td>
+            <td><%= contact.website %></td>
+            <td>Zip Code</td>
+            <td><%= contact.zip_code %></td>
+          </tr>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</div>

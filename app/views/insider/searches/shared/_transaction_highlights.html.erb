@@ -1,0 +1,59 @@
+<div class="ibox">
+  <div class="ibox-title">
+    <h4>Property Profile</h4>
+  </div>
+  <div class="ibox-content">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <tr>
+          <td>Insider Date</td>
+          <td><%= result.insider_date %></td>
+        </tr>
+        <tr>
+          <td>Insider Description</td>
+          <td><%= result.insider_description %></td>
+        </tr>
+        <% if result.units_count? %>
+          <tr>
+            <td>Units / $ Unit</td>
+            <td><%= result.units_count %> / <%#= TODO %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td>Tax Owner</td>
+          <td><%= result.owner %></td>
+        </tr>
+        <% if result.onsite_telephone? %>
+          <tr>
+            <td>Onsite Telephone</td>
+            <td><%= result.onsite_telephone %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td>Acres / $ Per Acre</td>
+          <td><%= result.acres_count %> / <%#= TODO %></td>
+        </tr>
+        <tr>
+          <td>Year Built</td>
+          <td><%= result.year_built %></td>
+        </tr>
+        <tr>
+          <td>Square Ft</td>
+          <td><%= result.square_footage %></td>
+        </tr>
+        <tr>
+          <td>Loan Amount</td>
+          <td><%#= TODO %></td>
+        </tr>
+        <tr>
+          <td>Attorney Name</td>
+          <td><%= result.attorney_name %></td>
+        </tr>
+        <tr>
+          <td>Attorney Telephone</td>
+          <td><%= result.attorney_telephone %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

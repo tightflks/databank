@@ -1,0 +1,20 @@
+<div class="ibox">
+  <div class="ibox-title">
+    <h4>Search Form</h4>
+  </div>
+  <div class="ibox-content">
+    <%= form_for @search, url: url_for(action: 'index'), method: 'GET', as: 'search', builder: Insider::Search::FormBuilder, html: {class: 'form-horizontal'} do |f| %>
+      <%= render partial: 'insider/searches/shared/fields', locals: {
+        f: f,
+        include_number_of_units: (defined?(include_number_of_units) && include_number_of_units),
+        skip_square_footage: (defined?(skip_square_footage) && skip_square_footage),
+      } %>
+
+      <div class="form-group">
+        <div class="col-sm-6 col-sm-offset-2">
+          <%= submit_tag 'Submit', class: 'btn btn-primary btn-block' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

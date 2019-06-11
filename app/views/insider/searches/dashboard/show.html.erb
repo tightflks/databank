@@ -1,0 +1,37 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="ibox">
+        <div class="ibox-title">
+          <h4>Choose Your Sector</h4>
+        </div>
+        <div class="ibox-content">
+          <% if policy(Apartment).index? %>
+            <p><%= link_to 'Apartments', insider_search_apartments_path %></p>
+          <% end %>
+
+          <% if policy(Franchise).index? %>
+            <p><%= link_to 'Franchise', insider_search_franchise_index_path %></p>
+          <% end %>
+
+          <% if policy(Industrial).index? %>
+            <p><%= link_to 'Industrial', insider_search_industrial_index_path %></p>
+          <% end %>
+
+          <% if policy(Land).index? %>
+            <p><%= link_to 'Land', insider_search_land_index_path %></p>
+          <% end %>
+
+          <% if policy(Office).index? %>
+            <p><%= link_to 'Offices', insider_search_offices_path %></p>
+          <% end %>
+
+          <% if policy(Office).index? %>
+            <p><%= link_to 'Retail', insider_search_retail_index_path %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

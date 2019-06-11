@@ -1,0 +1,42 @@
+<%= f.text_field_group :property_name %>
+<%= f.text_field_group :description %>
+<%= f.text_field_group :street_number %>
+<%= f.text_field_group :street_name %>
+<%= f.text_field_group :city %>
+<%= f.text_field_group :county %>
+<%= f.text_field_group :zipcode %>
+<%= f.text_field_group :market_area %>
+<%= f.text_field_group :district %>
+<%= f.text_field_group :land_lot %>
+
+<%= f.date_field_group :insider_date_start,       hint: 'Enter date only in MM/DD/YYYY format' %>
+<%= f.date_field_group :insider_date_end,         hint: 'Enter date only in MM/DD/YYYY format' %>
+<%= f.date_field_group :property_sale_date_start, hint: 'Enter date only in MM/DD/YYYY format' %>
+<%= f.date_field_group :property_sale_date_end,   hint: 'Enter date only in MM/DD/YYYY format' %>
+
+<%= f.text_field_group :property_sale_price_low %>
+<%= f.text_field_group :property_sale_price_high %>
+
+<%= f.date_field_group :land_sale_date_start, hint: 'Enter date only in MM/DD/YYYY format' %>
+<%= f.date_field_group :land_sale_date_end,   hint: 'Enter date only in MM/DD/YYYY format' %>
+
+<%= f.text_field_group :number_acres_low %>
+<%= f.text_field_group :number_acres_high %>
+<%= f.text_field_group :land_sale_price_low %>
+<%= f.text_field_group :land_sale_price_high %>
+<%= f.text_field_group :owner_name %>
+
+<%= f.text_field_group :year_built_start, hint: 'Enter year only in YYYY format' %>
+<%= f.text_field_group :year_built_end,   hint: 'Enter year only in YYYY format' %>
+
+<% unless defined?(skip_square_footage) && skip_square_footage %>
+  <%= f.text_field_group :square_ft_start %>
+  <%= f.text_field_group :square_ft_end %>
+<% end %>
+
+<% if defined?(include_number_of_units) && include_number_of_units %>
+  <%= f.text_field_group :number_units_start %>
+  <%= f.text_field_group :number_units_end %>
+<% end %>
+
+<%= f.text_field_group :seller %>

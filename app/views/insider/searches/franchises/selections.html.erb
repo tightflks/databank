@@ -1,0 +1,6 @@
+<div class="wrapper wrapper-content">
+  <% @search.select_results.each do |result| %>
+    <h2><%= result.name %></h2>
+    <%= render partial: 'insider/searches/shared/record', object: result %>
+  <% end %>
+</div>

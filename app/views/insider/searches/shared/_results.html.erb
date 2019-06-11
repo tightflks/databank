@@ -1,0 +1,33 @@
+<%= form_tag url_for(action: 'index'), method: 'GET' do %>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <% Insider::Search::Columns.each do |column| %>
+            <%= search_results_table_header search, column %>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% search.search_results.each do |result| %>
+          <tr>
+            <td><%= check_box_tag 'select_results[]', result.id, false, id: "select_result_#{result.id}" %></td>
+            <td><%= link_to result.name, url_for(action: 'show', id: result) %></td>
+            <td><%= result.address %></td>
+            <td><%= result.city %></td>
+            <td><%= result.zipcode %></td>
+            <td><%= result.county %></td>
+            <td><%= result.insider_date.to_s(:in_numbers) if result.insider_date %></td>
+            <td><%= result.sale_date.to_s(:in_numbers) if result.sale_date %></td>
+            <td><%= result.year_built %></td>
+            <td><%= result.description %></td>
+            <td><%= result.owner %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <%= submit_tag 'Submit', class: 'btn btn-primary' %>
+<% end %>

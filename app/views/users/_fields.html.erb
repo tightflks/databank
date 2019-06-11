@@ -1,0 +1,32 @@
+<%= f.text_field_group :username %>
+<%= f.text_field_group :email %>
+
+<div class="hr-line-dashed"></div>
+
+<%= f.password_group :password %>
+
+<div class="hr-line-dashed"></div>
+
+<%= f.text_field_group :first_name %>
+<%= f.text_field_group :last_name %>
+
+<%= f.fields_for :settings do |g| %>
+  <div class="hr-line-dashed"></div>
+  <%= g.text_field_group :company_name %>
+  <%= g.text_field_group :company_street %>
+  <%= g.text_field_group :company_city %>
+  <%= g.text_field_group :company_state %>
+
+  <div class="hr-line-dashed"></div>
+  <%= g.check_box_group :apartment, text: 'Apartment' %>
+  <%= g.check_box_group :franchise, text: 'Franchise' %>
+  <%= g.check_box_group :land, text: 'Land' %>
+  <%= g.check_box_group :office, text: 'Office' %>
+  <%= g.check_box_group :industrial, text: 'Industrial' %>
+<% end %>
+
+<div class="hr-line-dashed"></div>
+
+<%= f.check_box_group :is_active, text: 'Active?' %>
+<%= f.check_box_group :is_staff, text: 'Staff?' %>
+<%= f.check_box_group :is_superuser, text: 'Superuser?' %>

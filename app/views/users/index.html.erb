@@ -1,0 +1,45 @@
+<div class="wrapper wrapper-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="ibox">
+        <div class="ibox-title">
+          <h5>Users</h5>
+
+          <div class="ibox-tools">
+            <%= link_to icon_and_title('New User', 'plus'), new_user_path, class: 'btn btn-primary' if policy(User.new).new? %>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th><%= sortable_users_column 'username' %></th>
+                  <th><%= sortable_users_column 'name' %></th>
+                  <th><%= sortable_users_column 'email' %></th>
+                  <th><%= sortable_users_column 'company' %></th>
+                  <th>Roles</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @users.each do |user| %>
+                  <tr id="user-<%= user.id %>">
+                    <td><%= icon_tag('check', title: 'Active user') if user.is_active? %></td>
+                    <td><%= link_to user.username, user_path(user) %></td>
+                    <td><%= user.name %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.company %></td>
+                    <td><%= user.roles.join(', ') %></td>
+                    <td><%= user_actions user %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

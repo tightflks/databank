@@ -1,0 +1,9 @@
+<div class="wrapper wrapper-content">
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Found <%= number_with_delimiter @search.search_results.count %> lands.</h4>
+
+      <%= render partial: 'insider/searches/shared/results', locals: { search: @search } %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+# initialize the database
+
+mysql -u root
+mysql> CREATE DATABASE databank_development
+
+mysql -u root databank_development < /Users/dan/Downloads/databank_2017-02-03.sql

@@ -1,0 +1,58 @@
+<div class="ibox">
+  <div class="ibox-title">
+    <h4>Contact Information</h4>
+  </div>
+  <div class="ibox-content">
+    <ul class="nav nav-tabs" role="tablist">
+      <% result.contacts.each do |type, contact| %>
+        <li role="presentation" class="<%= 'active' if result.contacts.first.first == type %>"><a href="#<%= type %>" aria-controls="<%= type %>" role="tab" data-toggle="tab"><%= t "insider.searches.shared.contact_information.types.#{type}" %></a></li>
+      <% end %>
+    </ul>
+    <div class="tab-content">
+      <% result.contacts.each do |type, contact| %>
+        <div role="tabpanel" class="tab-pane<%= ' active' if result.contacts.first.first == type %>" id="<%= type %>">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <tr>
+                <td class="width-15">Name</td>
+                <td class="width-35"><%= contact.name %></td>
+                <td class="width-15">Address</td>
+                <td class="width-35"><%= contact.address %></td>
+              </tr>
+              <tr>
+                <td>Telephone</td>
+                <td><%= contact.telephone %></td>
+                <td>Suite</td>
+                <td><%= contact.suite %></td>
+              </tr>
+              <tr>
+                <td>Rep 1</td>
+                <td><%= contact.representative1 %></td>
+                <td>P.O. Box</td>
+                <td><%= contact.po_box %></td>
+              </tr>
+              <tr>
+                <td>Rep 2</td>
+                <td><%= contact.representative2 %></td>
+                <td>City</td>
+                <td><%= contact.city %></td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td><%= contact.email %></td>
+                <td>State</td>
+                <td><%= contact.state %></td>
+              </tr>
+              <tr>
+                <td>Website</td>
+                <td><%= contact.website %></td>
+                <td>Zip Code</td>
+                <td><%= contact.zip_code %></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

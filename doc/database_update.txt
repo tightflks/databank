@@ -1,0 +1,7 @@
+scp /Users/dan/Downloads/databank_2017-03-21.sql deploy@34.200.170.83:~/
+
+ssh deploy@34.200.170.83
+mysql -u deploy databank_production < ~/databank_2017-03-21.sql
+
+cd /var/www/databank/current
+bin/rake import:fix_bad_data RAILS_ENV=production

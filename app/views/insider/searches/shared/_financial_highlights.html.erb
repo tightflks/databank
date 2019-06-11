@@ -1,0 +1,85 @@
+<div class="ibox">
+  <div class="ibox-title">
+    <h4>Financial Highlights</h4>
+  </div>
+  <div class="ibox-content">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <tr>
+          <td>Property Sale Amount</td>
+          <td><%= number_to_currency result.property_sale_amount %></td>
+        </tr>
+        <tr>
+          <td>Property Sale Date</td>
+          <td><%= result.property_sale_date %></td>
+        </tr>
+        <tr>
+          <td>Land Sale Amount</td>
+          <td><%= result.land_sale_amount %></td>
+        </tr>
+        <tr>
+          <td>Land Sale Date</td>
+          <td><%= result.land_sale_date %></td>
+        </tr>
+        <tr>
+          <td>Foreclosure Amount</td>
+          <td><%= number_to_currency result.foreclosure_amount %></td>
+        </tr>
+        <tr>
+          <td>Foreclosure Date</td>
+          <td><%= result.foreclosure_date %></td>
+        </tr>
+        <tr>
+          <td>Equity</td>
+          <td><%= number_to_currency result.equity %></td>
+        </tr>
+        <tr>
+          <td>Down Payment</td>
+          <td><%= number_to_currency result.down_payment %></td>
+        </tr>
+        <tr>
+          <td>Purchase Note</td>
+          <td><%= result.purchase_note %></td>
+        </tr>
+        <tr>
+          <td>Utility</td>
+          <td><%= result.utility %></td>
+        </tr>
+        <tr>
+          <td>Application Fee</td>
+          <td><%= result.application_fee %></td>
+        </tr>
+        <% if result.refund_amount? %>
+          <tr>
+            <td>Refund Amount</td>
+            <td><%= result.refund_amount %></td>
+          </tr>
+        <% end %>
+        <% if result.units_vacant? %>
+          <tr>
+            <td>Units Vacant</td>
+            <td><%= result.units_vacant %></td>
+          </tr>
+        <% end %>
+        <% if result.pet_deposit_amount? %>
+          <tr>
+            <td>Pet Deposit Amount</td>
+            <td><%= result.pet_deposit_amount %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td>UNIT_AC</td>
+          <td><%#= TODO %></td>
+        </tr>
+        <tr>
+          <td>Monthly Income</td>
+          <td><%= result.monthly_income %></td>
+        </tr>
+        <tr>
+          <td>Yearly Income</td>
+          <td><%= result.yearly_income %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

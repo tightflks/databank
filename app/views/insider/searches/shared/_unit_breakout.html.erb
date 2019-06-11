@@ -1,0 +1,37 @@
+<div class="ibox">
+  <div class="ibox-title">
+    <h4>Unit Breakout</h4>
+  </div>
+  <div class="ibox-content">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Unit Type</th>
+            <th>Average Price</th>
+            <th>Min Sq Ft</th>
+            <th>Max Sq Ft</th>
+            <th>Unit Mix</th>
+            <th>INCR 0-4</th>
+            <th>Min Rent</th>
+            <th>Max Rent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% result.breakouts.each do |breakout| %>
+            <tr>
+              <td><%= breakout.unit_type %></td>
+              <td><%= breakout.average_price.nil? ? 'None' : number_to_currency(breakout.average_price) %></td>
+              <td><%= number_with_delimiter breakout.minimum_square_footage %></td>
+              <td><%= number_with_delimiter breakout.maximum_square_footage %></td>
+              <td><%= breakout.unit_mix %></td>
+              <td><%= breakout.increase.nil? ? 'None' : breakout.increase %></td>
+              <td><%= breakout.minimum_rent %></td>
+              <td><%= breakout.maximum_rent %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

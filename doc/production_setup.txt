@@ -1,0 +1,57 @@
+# using docker would be great!
+# No time to learn though, so going with my proven setup.
+
+# as root
+sudo apt-get update
+apt-get upgrade
+
+useradd deploy
+adduser deploy sudo
+
+# lock down SSH
+vi /etc/ssh/sshd_config
+PermitRootLogin no
+service ssh restart
+
+# set timezone
+dpkg-reconfigure tzdata
+service cron restart
+
+# install mysql
+# https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu
+sudo apt-get install mysql-server libmysqlclient-dev
+sudo /usr/bin/mysql_secure_installation
+mysql -uroot -p
+  CREATE USER deploy;
+  CREATE DATABASE databank_production;
+  GRANT ALL PRIVILEGES ON databank_production.* TO deploy WITH GRANT OPTION;
+
+scp /Users/dan/Downloads/databank_2017-02-03.sql deploy@34.200.170.83:~/
+mysql -u deploy databank_production < /home/deploy/databank_2017-02-03.sql
+
+# install apache2
+# https://www.digitalocean.com/community/tutorials/how-to-setup-a-rails-4-app-with-apache-and-passenger-on-centos-6
+gem install passenger
+passenger-install-apache2-module
+
+  LoadModule passenger_module /home/deploy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/passenger-5.1.2/buildout/apache2/mod_passenger.so
+  <IfModule mod_passenger.c>
+    PassengerRoot /home/deploy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/passenger-5.1.2
+    PassengerDefaultRuby /home/deploy/.rbenv/versions/2.3.1/bin/ruby
+  </IfModule>
+
+  <VirtualHost *:80>
+    ServerName www.yourhost.com
+    DocumentRoot /var/www/databank/current/public
+    <Directory /var/www/databank/current/public>
+      AllowOverride all
+      Options -MultiViews
+    </Directory>
+  </VirtualHost>
+service apache2 start
+
+# as deploy
+# https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-14-04
+sudo apt-get install nodejs
+cap production deploy:check
+cap production deploy
